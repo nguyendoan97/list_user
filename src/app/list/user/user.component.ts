@@ -45,8 +45,14 @@ export class UserComponent implements OnInit {
     })
   }
 
-  delete(id){
-    return this.users.splice(id-1,1)
+  delete(id:number){
+    let userDeleted = [];
+    this.userFilter.map(user => {
+      if (user.id != id) {
+        userDeleted.push(user);
+      }
+    });
+    this.userFilter = userDeleted;
   }
 
 }
